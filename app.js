@@ -6,14 +6,16 @@ const { ObjectId } = require("mongodb")
 const app = express()
 app.use(express.json())
 //db connection
-
+const hostname = '127.0.0.1';
+const port = 3000;
 
 let db
+app.listen(port,hostname, () => {
+    console.log(`Server running at http://${hostname}:${port}/`);
+})
 connectDb((error) => {
     if (!error) {
-        app.listen(3000, () => {
-            console.log("app listening to port 3000")
-        })
+       
         db = getDd()
     }
 })
